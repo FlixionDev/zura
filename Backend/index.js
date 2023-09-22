@@ -7,7 +7,13 @@ const { projectRouter } = require("./Routes/Projects.routes")
 const {isLoginCheck} =require("./middleware/isLogin.middleware")
 const {podcastRouter} =require("./Routes/Podcast.routes")
 app.use(express.json());
-app.use(cors())
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            
+    optionSuccessStatus:200,
+ }
+ 
+app.use(cors(corsOptions))
 app.get("/", async (req, res) => {
     res.send("Welcome")
 })

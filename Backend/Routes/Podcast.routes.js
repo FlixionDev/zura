@@ -25,10 +25,31 @@ podcastRouter.get("/:id", async (req, res) => {
     }
 })
 
+/* This route is use to get single podcast search by id */
+podcastRouter.get("/podcast/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        let data = await PodcastModel.find({ _id: id });
+        // console.log(data)
+        if(data.length>0){
+            if (data[0].userId === req.body.userId) {
+                res.send(data)
+            } else {
+                res.send({ "message": "You are not authorized" });
+            }
+
+        }else{
+            res.send({ "message": "No podcast found" })
+        }
+    } catch (err) {
+        console.log(err);
+        res.send({ "message": "Something went wrong" })
+    }
+})
 
 /* This routes will add podcast to your project */
 
-podcastRouter.post("/add/:id", async (req, res) => {
+podcastRouter.post("/add/:id", async (req, res) => {     //:id is project id we have to give
     const { id } = req.params;
     try {
         let data = await ProjectModel.find({ _id: id });
@@ -100,4 +121,5 @@ podcastRouter.delete("/delete/:id", async (req, res) => {
         res.send({ "message": "Something went wrong" })
     }
 })
+
 module.exports = { podcastRouter }
