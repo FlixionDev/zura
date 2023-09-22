@@ -8,7 +8,7 @@ export default function PrivateRoute({ children }) {
     let podIsLogin=useSelector((storeData)=>storeData.podIsLogin);
     const [data,setData]=useState({email:''});
     const loginFunc=()=>{
-        fetch(`http://localhost:4000/register/`,{
+        fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/register/`,{
             method:"POST",
             body:JSON.stringify(data),
             headers:{

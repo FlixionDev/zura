@@ -24,7 +24,7 @@ export default function Upload() {
         setIsOpen(true)
     }
     const uploadPodcastFunc = () => {
-        fetch(`http://localhost:4000/podcast/add/${id}`, {
+        fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/podcast/add/${id}`, {
             method: "POST",
             body: JSON.stringify(pod),
             headers: {
@@ -39,7 +39,7 @@ export default function Upload() {
         }).catch((err) => { console.log(err) })
     }
     const fetchAllPodcastFromDb = () => {
-        fetch(`http://localhost:4000/podcast/${id}`, {
+        fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/podcast/${id}`, {
             headers: {
                 "Authorization": localStorage.getItem("token")
             }
@@ -53,7 +53,7 @@ export default function Upload() {
         }).catch((err) => { console.log(err) })
     }
     const deletePodcastFunc=(podId)=>{
-        fetch(`http://localhost:4000/podcast/delete/${podId}`, {
+        fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/podcast/delete/${podId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": localStorage.getItem("token"),

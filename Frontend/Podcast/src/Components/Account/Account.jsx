@@ -14,7 +14,7 @@ export default function Account() {
     setUserEmail(user.email)
   }, []);
   const updateUserNameFunc = () => {
-    fetch(`http://localhost:4000/register/${id}`, {
+    fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/register/${id}`, {
       method: "PATCH",
       body: JSON.stringify(userName),
       headers: {

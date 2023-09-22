@@ -19,7 +19,7 @@ export default function EditPodcast() {
     const [podcast, setPodcast] = useState({});
     const [defaultPod, setDefaultPod] = useState({});
     const fetchPodcastFromServer = () => {
-        fetch(`http://localhost:4000/podcast/podcast/${id}`, {
+        fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/podcast/podcast/${id}`, {
             headers: {
                 "Authorization": localStorage.getItem("token")
             }
@@ -38,7 +38,7 @@ export default function EditPodcast() {
             title: podcast.title,
             description: podcast.description
         }
-        fetch(`http://localhost:4000/podcast/edit/${id}`, {
+        fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/podcast/edit/${id}`, {
             method: "PATCH",
             body: JSON.stringify(data),
             headers: {

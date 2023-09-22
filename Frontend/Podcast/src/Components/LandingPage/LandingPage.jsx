@@ -20,18 +20,21 @@ export default function LandingPage() {
     function openModal() {
         setIsOpen(true)
     }
-    // console.log(allProject)
     const fetchAllProjectFromDb = () => {
-        fetch(`http://localhost:4000/project/`, {
+        fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/project/`, {
             headers: {
                 "Authorization": localStorage.getItem("token")
             }
         }).then(res => res.json()).then((res) => {
-            setAllProject(res.allProject);
+            if(res.message){
+                setAllProject([])
+            }else{
+                setAllProject(res.allProject);
+            }
         }).catch((err) => { console.log(err) })
     }
     const createProjectFunc = () => {
-        fetch(`http://localhost:4000/project/`, {
+        fetch(`https://long-gray-cygnet-shoe.cyclic.cloud/project/`, {
             method: "POST",
             body: JSON.stringify(projectName),
             headers: {
