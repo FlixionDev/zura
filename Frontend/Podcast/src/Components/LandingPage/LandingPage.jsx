@@ -147,8 +147,8 @@ export default function LandingPage() {
                 {
                     allProject.map((el, ind) => {
                         return <Link key={ind + 1} to={`/project/${el._id}/upload`}><div className='flex rounded-md p-2.5' style={{ boxShadow:" rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
-                            <div style={{color:"white",backgroundColor:color[ind%3]}} className='rounded-md flex items-center justify-center overflow-hidden text-7xl w-40 h-40'>{el.projectName.match(/\b(\w)/g).join('').toUpperCase()}</div>
-                            <p className='m-auto mt-0.5'>{el.projectName}</p>
+                            <div style={{color:"white",backgroundColor:color[ind%3],minWidth:"160px",height:"160px"}}  className='rounded-md flex items-center justify-center overflow-hidden text-7xl w-40 h-40'>{el.projectName.match(/\b(\w)/g).join('').toUpperCase().slice(0, 2)}</div>
+                            <p className='m-auto mt-0.5 text-center'>{el.projectName}</p>
                         </div></Link>
                     })
                 }
